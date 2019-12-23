@@ -29,7 +29,7 @@ RUN apt-get update && \
 # Instal the GPG key for the labs.consol.de repository and install 
 # the repository
 #
-RUN curl -s "https://build.opensuse.org/projects/home:naemon/public_key" | sudo apt-key add -
+RUN curl -s "https://build.opensuse.org/projects/home:naemon/public_key" | apt-key add -
 RUN echo "deb http://download.opensuse.org/repositories/home:/naemon/xUbuntu_$(lsb_release -rs)/ ./" >> /etc/apt/sources.list.d/naemon-stable.list
 RUN apt-get update &&\
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
