@@ -34,7 +34,7 @@ RUN echo "deb http://download.opensuse.org/repositories/home:/naemon/xUbuntu_$(l
 RUN apt-get update &&\
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
     nagios-nrpe-plugin\
-    naemon=1.1.0
+    naemon
 
 ############################################################
 # If modifying this build script, add custom packages here! #
