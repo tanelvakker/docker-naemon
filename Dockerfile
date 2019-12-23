@@ -29,17 +29,15 @@ RUN apt-get update && \
 # Instal the GPG key for the labs.consol.de repository and install 
 # the repository
 #
-RUN gpg --keyserver keys.gnupg.net --recv-keys F8C1CA08A57B9ED7 &&\
-  gpg --armor --export F8C1CA08A57B9ED7 | apt-key add - &&\
-  echo 'deb http://labs.consol.de/repo/stable/ubuntu xenial main' \
-  > /etc/apt/sources.list.d/consol.stable.list &&\
-  apt-get update &&\
+RUN curl -s "https://build.opensuse.org/projects/home:naemon/public_key" | sudo apt-key add -
+RUN echo "deb http://download.opensuse.org/repositories/home:/naemon/xUbuntu_$(lsb_release -rs)/ ./" >> /etc/apt/sources.list.d/naemon-stable.list
+RUN apt-get update &&\
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
     nagios-nrpe-plugin\
     naemon=1.1.0
 
 ############################################################
-# If modifying this build script, add cutom packages here! #
+# If modifying this build script, add custom packages here! #
 ############################################################
 
 #
